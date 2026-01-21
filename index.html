@@ -31,16 +31,38 @@ Hey! Contact us clicking here 👅
     <h2 style="color: #ff66b2;">Faltan para el Maratón:</h2>
     <div id="countdown" style="font-size: 24px; font-weight: bold; font-family: monospace;"></div>
 </div>
+<!-- Sección del Temporizador -->
+<div style="background: #ffe6f2; padding: 20px; border-radius: 15px; text-align: center; margin: 20px 0; border: 2px solid #ff66b2;">
+    <h2 style="color: #ff66b2; font-family: sans-serif; margin-top: 0;">Countdown to Marathon 🐧</h2>
+    <div id="countdown" style="font-size: 28px; font-weight: bold; font-family: 'Consolas', monospace; color: #333;"></div>
+    <p style="margin-bottom: 0; font-size: 14px; color: #ff66b2;">June 21, 2026 - 09:00 AM</p>
+</div>
+
 <script>
-    // Fecha del maratón (puedes cambiarla)
-    const eventDate = new Date("March 20, 2026 10:00:00").getTime();
-    setInterval(function() {
+    // Configuración de la fecha: 21 de junio de 2026 a las 09:00:00
+    const eventDate = new Date("June 21, 2026 09:00:00").getTime();
+
+    const timer = setInterval(function() {
         const now = new Date().getTime();
         const diff = eventDate - now;
+
+        // Cálculos de tiempo
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById("countdown").innerHTML = days + "d " + hours + "h ";
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        // Mostrar el resultado en el elemento con id="countdown"
+        document.getElementById("countdown").innerHTML = 
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+        // Si la fecha ya pasó
+        if (diff < 0) {
+            clearInterval(timer);
+            document.getElementById("countdown").innerHTML = "¡The race has started! 🏃‍♂️";
+        }
     }, 1000);
 </script>
+
 </body>
 </html>
