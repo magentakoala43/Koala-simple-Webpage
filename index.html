@@ -24,8 +24,29 @@ Hey! Contact us clicking here 👅
 <p>
     In this page we will post our actualizations of the team and our formation for the Maratón.
 </p>
-<input>
-    
+<form onsubmit="return false;">
+    <input type="text" id="escritura" placeholder="Escribe algo...">  
+    <button id="guardadura">Buttonear texto</button>
+
+<form onsubmit="return false;">
+    <input type="text" id="escritura" placeholder="Escribe algo...">  
+    <button id="guardadura">Buttonear texto</button>
+</form>
+
+<div id="impresion"></div>
+
+<script>
+    const boton = document.getElementById('guardadura');
+    const inputElemento = document.getElementById('escritura');
+    const destino = document.getElementById('impresion');
+
+    boton.addEventListener('click', function() {
+        const datoCapturado = inputElemento.value; 
+        destino.innerText = datoCapturado;
+        console.log("Has escrito: " + datoCapturado);
+    });
+</script>
+
 <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT2bBzJln5AiFKzgJxkwGqA4jUs7kTyxXOHCrFwHkUJZvR8of5ZthQ0K9NYn9Cc11l02tRfAcF3fN7B/pubhtml?gid=0&single=true">
 <h6 onclick="alert('You are going to our players page')">
     Check us! ♡
@@ -67,6 +88,5 @@ Hey! Contact us clicking here 👅
         }
     }, 1000);
 </script>
-
 </body>
 </html>
